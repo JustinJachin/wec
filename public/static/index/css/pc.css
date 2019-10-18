@@ -1,0 +1,93 @@
+/*logo 标题*/
+.logo{
+    margin-top: 16px;
+    margin-bottom:16px 
+}
+.logo img{
+    width: 30px
+}
+.nav-title a{
+    text-decoration: none;
+}
+.nav-title a:focus{
+    border-bottom:none;
+}
+/*轮播图*/
+.slide-show{
+    height:16%;
+    width: 100%
+}
+/*margin top*/
+.top10{
+    margin-top: 10px;
+}
+.top30{
+    margin-top: 30px;
+}
+.top60{
+    margin-top: 60px;
+}
+
+/*选项卡设置*/
+.nav_tab{
+    width: 88%;
+    margin: auto;
+}
+.nav_tab li{
+    margin: auto;
+}
+
+.nav-item a{
+    color: #000000;
+}
+a:hover{
+    text-decoration: none;
+}
+a:focus{
+    text-decoration: none;
+}
+.nav-item .active,a:focus{
+    border-bottom: 2px solid #09BB07;padding-bottom: 12px;
+    color: #09BB07;
+}
+
+.list-content{
+    border-top: 1px solid #F1F1F1;padding-bottom: 8px;
+    height: 100px;
+    width: 100%;
+    line-height: 100px;
+}
+.list-img{
+    width: 20%;
+    height: 76px;
+    line-height: 76px;
+    margin: 12px 0;
+}
+.list-a{
+    width: 100%;
+    height: 100px;
+}
+.list-span{
+    
+    width: 80%;
+}
+.nav-time{
+    color:#B7B7B7;
+    font-size: 12px;
+    margin-left: 6px;
+}
+.top-img img{
+    width: 100%;
+    height: 250px;
+}
+
+.container{
+    width: 680px;
+}
+.article-content{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.footer{
+    color: #B7B7B7;
+}

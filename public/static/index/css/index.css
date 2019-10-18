@@ -1,0 +1,144 @@
+/*logo 标题*/
+.logo{
+	margin-top: 16px;
+	margin-bottom:16px 
+}
+.logo img{
+	width: 30px
+}
+.nav-title a{
+	text-decoration: none;
+}
+.nav-title a:focus{
+	border-bottom:none;
+}
+/*轮播图*/
+.slide-show{
+	height:10%;
+	width: 100%
+}
+/*margin top*/
+.top10{
+	margin-top: 10px;
+}
+.top30{
+	margin-top: 30px;
+}
+.top60{
+    margin-top: 60px;
+}
+
+/*选项卡设置*/
+.nav_tab{
+	width: 88%;
+	margin: auto;
+}
+.nav_tab li{
+	margin: auto;
+}
+
+.nav-item a{
+	color: #000000;
+}
+a:hover{
+	text-decoration: none;
+}
+a:focus{
+	text-decoration: none;
+}
+.nav-item .active,a:focus{
+	border-bottom: 2px solid #09BB07;padding-bottom: 12px;
+	color: #09BB07;
+}
+
+.list-content{
+	border-top: 1px solid #F1F1F1;padding-bottom: 8px;
+	height: 100px;
+	width: 100%;
+	line-height: 100px;
+}
+.list-img{
+	width: 20%;
+	height: 76px;
+	line-height: 76px;
+	margin: 12px 0;
+}
+.list-a{
+	width: 100%;
+	height: 100px;
+}
+.list-span{
+	
+	width: 80%;
+}
+.nav-time{
+	color:#B7B7B7;
+	font-size: 12px;
+	margin-left: 6px;
+}
+.top-img img{
+    width: 100%;
+    height: 250px;
+}
+.article-content{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.footer{
+    color: #B7B7B7;
+}
+@media only screen and (max-width: 480px) {
+        .tab .nav-tabs {
+            border-bottom: 0 none;
+            background: #eaeaea;
+        }
+        .tab .nav-tabs li a {
+            background: transparent;
+            border-radius: 0;
+            font-size: 16px;
+            border: none;
+            color: #333;
+            padding: 12px 22px;
+        }
+        .tab .nav-tabs li.active a{
+            border: 0;
+            border-left: 1px solid lightgray;
+            border-right: 0;
+            border-bottom: 0;
+            color: orange; 
+        }
+        .tab .nav-tabs li:first-child.active a{
+            border-left: 0;
+        }
+        .tab .nav-tabs li.active a:after {
+            content: "";
+            position: absolute;
+            left: 45%;
+            bottom: -14px;
+            border: 7px solid transparent;
+            border-top: 7px solid #e67e22;
+        }
+        .tab .nav-tabs{
+            width: 100%;
+            background: transparent;
+        }
+        /* 设置选项卡的宽度,这里要根据选项卡的个数手动设置下*/
+        .tab .nav-tabs li {    
+            width:33.3%;
+            background: transparent;
+        }
+        .tab .nav-tabs li a {
+            text-align: center;
+            margin-right: 0;
+            border: 1px solid lightgray;
+            border-top: 0;
+            border-right: 0;
+        }
+        .tab .nav-tabs li:first-child a {
+            border-bottom-left-radius: 0;
+            border-left: 0;
+        }
+        .tab .nav-tabs li.active a:after {
+            border: none;
+        }
+    }
