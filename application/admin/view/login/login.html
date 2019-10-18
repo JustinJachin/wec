@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Kharna-Admin Dashboard</title>
+		<!--Favicon -->
+		<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+		<!--Bootstrap.min css-->
+		<link rel="stylesheet" href="__STATIC__/plugins/bootstrap/css/bootstrap.min.css">
+		<!--Icons css-->
+		<link rel="stylesheet" href="__STATIC__/css/icons.css">
+		<!--Style css-->
+		<link rel="stylesheet" href="__STATIC__/css/style.css">
+		<!--mCustomScrollbar css-->
+		<link rel="stylesheet" href="__STATIC__/plugins/scroll-bar/jquery.mCustomScrollbar.css">
+		<!--Sidemenu css-->
+		<link rel="stylesheet" href="__STATIC__/plugins/toggle-menu/sidemenu.css">
+	</head>
+	<body class="bg-primary">
+		<div id="app">
+			<section class="section section-2">
+                <div class="container">
+					<div class="row">
+						<div class="single-page single-pageimage construction-bg cover-image " data-image-src="__STATIC__/img/news/img14.jpg">
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="wrapper wrapper2">
+										<form id="login" class="card-body" tabindex="500" method="post">
+											<h3>登  录</h3>
+											<div class="mail">
+												<input type="text" id="name" name="name">
+												<label>用户名</label>
+											</div>
+											<div class="passwd">
+												<input type="password" id="password" name="password">
+												<label>密码</label>
+											</div>
+											<div class="mail">
+												<input type="text" name="code" style="width: 100px;margin-right: 200px">
+                                                <img src="{:url('admin/login/verify')}" onclick="changeCode(this)" style="margin-left: 100px;margin-top: -60px"/>
+												<label>验证码</label>
+											</div>
+											<div class="submit">
+												<input class="btn btn-primary btn-block" value="Login" type="submit">
+											</div>
+											
+										</form>
+
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="log-wrapper text-center">
+
+										<h3>欢 迎</h3>
+										<h3>登录系统</h3>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>
+			</section>
+		</div>
+		<script>
+			// 点击验证码刷新图片
+			function changeCode(obj)
+			{
+				var url = "{:url('login/verify',['random'=>"+Math.random+"])}";  //兼容低版本的浏览器
+				obj.src = url;
+			}
+			
+	
+		</script>
+		<!--Jquery.min js-->
+		<script src="__STATIC__/js/jquery.min.js"></script>
+		<script src="__STATIC__/js/md5.js"></script>
+
+		<!--popper js-->
+		<script src="__STATIC__/js/popper.js"></script>
+
+		<!--Tooltip js-->
+		<script src="__STATIC__/js/tooltip.js"></script>
+
+		<!--Bootstrap.min js-->
+		<script src="__STATIC__/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+		<!--Jquery.nicescroll.min js-->
+		<script src="__STATIC__/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+
+		<!--Scroll-up-bar.min js-->
+		<script src="__STATIC__/plugins/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+
+		<script src="__STATIC__/js/moment.min.js"></script>
+
+		<!--mCustomScrollbar js-->
+		<script src="__STATIC__/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+		<!--Sidemenu js-->
+		<script src="__STATIC__/plugins/toggle-menu/sidemenu.js"></script>
+
+		<!--Scripts js-->
+		<script src="__STATIC__/js/scripts.js"></script>
+
+	</body>
+</html>

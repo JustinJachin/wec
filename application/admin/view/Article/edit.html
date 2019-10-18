@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {include file="public:top"}
+        <block name="topCss">
+            <link rel="stylesheet" href="__STATIC__/editor/css/editormd.css" />
+            <!--Morris css-->
+            <link rel="stylesheet" href="__STATIC__/plugins/morris/morris.css">
+            <!--Select2 css-->
+            <link rel="stylesheet" href="__STATIC__/plugins/select2/select2.css">
+
+            <link href="__STATIC__/summernote/dist/summernote.css" rel="stylesheet">
+            <style type="text/css">
+                .modal-backdrop{background-color: rgba(0,0,0,0) !important;z-index: 0 !important;}
+            </style>
+        </block>
+
+    </head>
+
+    <body class="app ">
+
+        <div id="spinner"></div>
+
+        <div id="app">
+            <div class="main-wrapper" >
+                {include file="public:header"}
+                {include file="public:menu"}
+                <block name="bodsy">
+                <div class="app-content">
+                    <section class="section">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{:url('index/index')}">首页</a></li>
+                            <li class="breadcrumb-item"><a href="{:url('article/index')}">文章列表</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">文章编辑</li>
+                        </ol>
+
+                        <div class="row">
+                            <div class="col-lg-12 col-xl-2 col-md-12 col-sm-12"></div>
+                            <div class="col-lg-12 col-xl-8 col-md-12 col-sm-12">
+                                <div class="card ">
+                                    <div class="card-header">
+                                        <h4>文章编辑</h4>
+                                    </div>
+                                    <div class="card-body cards">
+                                        <form id="form" class="form-horizontal" οnsubmit="return false;" enctype="multipart/form-data"  target="addfile">
+                                            <input type="hidden" name="id" value="{$article.id}">
+                                            <div class="form-group row">
+                                                <label class="col-md-2 col-form-label">文章标题</label>
+                                                <div class="col-md-4">
+                                                    <input id="title" type="text" class="form-control" placeholder="文章标题" name="title" value="{$article.title}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-2 col-form-label">文章类型</label>
+                                                <div class="col-md-2">
+                                                    <select class="form-control select2 w-100"  name="typeId">
+                                                        <option value="{$article.typeId}">{$article.typename}</option>
+                                                        {volist name='list' id="vo"}
+                                                        <option value="{$vo.id}">{$vo.name}</option>
+                                                        {/volist}
+                                                        <option value="">请选择</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-2 col-form-label">首页轮播图</label>
+                                                <div class="col-md-2">
+                                                    <select class="form-control select2 w-100"  name="flag">
+
+                                                        {eq name='$article.flag' value="是"}
+                                                        <option value="1">是</option>
+                                                        <option value="0">否</option>
+                                                        {else/}
+                                                        <option value="0">否</option>
+                                                        <option value="1">是</option>
+                                                        {/eq}
+                                                        
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-2 col-form-label" for="example-email">文章内容</label>
+                                                
+                                                <div class="col-md-10" >
+
+                                                    <!-- <textarea id="elm1" name="area"></textarea> -->
+                                                <!-- <div class="col-md-10" id="test-editor"> -->
+                                                    <!-- <textarea style="display:none;">### 关于 Editor.md
+                                                **Editor.md** 是一款开源的、可嵌入的 Markdown 在线编辑器（组件），基于 CodeMirror、jQuery 和 Marked 构建。
+                                                    </textarea> -->
+                                                    <textarea id="summernote" name="content">{$article.content}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-2 col-form-label" for="example-email">缩略图片</label>
+                                                <div class="col-md-4">
+                                                    <input type="file" class="form-control" name='img' id="img" >                                      
+                                                </div>
+                                                <div id='readImgs' class="col-md-2"></div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-2"></div>
+                                                <div id='readImg' class="col-md-8">
+                                                    <input type="hidden" id="imgs" name="imgs"value="{$article.picture}" >
+                                                    <img src="__STATIC__{$article.picture}" width="90%" height="90%" />
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group mb-0 mt-2 row justify-content-end">
+                                                <div class="col-md-12 text-center">
+                                                    <button type="submit" class="btn btn-primary">提 交</button>
+                                                    <a href="{:url('admin/index')}" class="btn btn-outline-info">返 回</a> 
+                                                </div>
+                                            </div>
+                                            
+                                        </form>
+                                        <iframe id="addfile_iframe" src="" name="addfile" style="display: none;" frameborder="0"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-xl-2 col-md-12 col-sm-12"></div>
+                            
+                        </div>
+
+                        
+                    </section>
+                </div>
+
+                </block>
+            
+            </div>
+        </div>
+    
+{include file="public:js"}
+    <!--ckeditor js-->
+    <script src="__STATIC__/plugins/tinymce/tinymce.min.js"></script>
+
+    <!-- <script src="__STATIC__/editor/editormd.min.js"></script> -->
+    
+    <script src="__STATIC__/summernote/dist/summernote.js"></script>
+
+
+    <!--Scripts js-->
+    <script src="__STATIC__/js/formeditor.js"></script>
+<block name="js">
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // $('#summernote').summernote('fullscreen.toggle');
+            $('#summernote').summernote({
+                // 'fullscreen.toggle',
+                placeholder: 'Hello bootstrap 4',
+                height: 400,
+                tabsize: 2,//页面上的summernote编辑框的个数
+                lang: 'zh-CN',//语言
+                //回调函数，重写onImageUpload方法
+                callbacks:{
+                    onImageUpload: function(files, editor, welEditable) {
+                        sendFile(this,files[0],editor,welEditable);
+                    }
+                },
+            });
+        });
+
+        function sendFile(val,files,editor,welEditable) {
+            data = new FormData();
+            data.append("image", files);
+            $.ajax({
+                data: data,
+                dataType: 'json',
+                type: "POST",
+                url: "{:url('/admin/Updateimg/updateImage')}",
+                cache: false,
+                contentType: false,
+                processData: false,
+                responseType: "json",
+                success: function(data) {
+                    if(data.status==1){
+                        $('#summernote').summernote('editor.insertImage', '__STATIC__'+data.info);
+                    }else{
+                        toastr.error('', data.msg);
+                    }
+                    
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    toastr.error('请联系管理员', '系统错误');
+                }
+            });
+        }
+        $("#img").change(function(){
+            var formData=new FormData(document.getElementById('img')[0]);
+            formData.append('image',$(this).get(0).files[0]);
+            $.ajax({
+                url:"{:url('/admin/Updateimg/updateImage')}",
+                type:'post',
+                data:formData,
+                cache:false,
+                contentType:false,
+                processData:false,
+                async: false,
+                success:function(data){
+                    if(data.status==1){
+                        toastr.success('', data.msg);
+                        $("#readImg").html("").html('<img src="__STATIC__'+data.info+'" width="90%" height="90%" />');
+                        $("#readImgs").html("").html('<input type="hidden" id="imgs" name="imgs"value="'+data.info+'" >');
+                        // setTimeout("location.reload()",1000);//设置延迟时间执行
+                        // window.location.href="index";
+                    }else{
+                        toastr.error('', data.msg);
+                    }
+                    
+                },
+                error:function(e){
+                    toastr.error('请联系管理员', '系统错误');
+                }
+            })
+        })
+        $("#form").submit(function(){
+            var formData = $("#form").serialize();//serialize() 方法通过序列化表单值，创建 URL 编码文本
+            var content=$('#summernote').summernote('code');
+            $.ajax({
+                type:'post',
+                url:"{:url('/admin/article/edit')}",
+                data:formData,
+                dataType:'json',
+                success:function(data){
+                    if(data.status==1){
+                        toastr.success('', data.msg);
+                        // $(".cards").load(location.href+" .cards");
+                        setTimeout("location.reload()",1000);//设置延迟时间执行
+                        // window.location.href="index";
+                    }else{
+                        toastr.error('', data.msg);
+                    }
+                },
+                error:function(msg){
+                    
+                    toastr.error('请联系管理员', '系统错误');
+                    
+                }
+            })
+        
+        });
+    </script>
+</block>
+    
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{include file="public:top"}
+	<block name="topCss">
+		<!--morris css-->
+		<link rel="stylesheet" href="__STATIC__/plugins/morris/morris.css">
+
+		
+	</block>
+</head>
+
+<body class="app ">
+
+<div id="spinner"></div>
+
+<div id="app">
+	<div class="main-wrapper" >
+		{include file="public:header"}
+		{include file="public:menu"}
+		<block name="bodsy">
+			<div class="app-content">
+				<section class="section">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="#" class="text-muted">Home</a></li>
+						<li class="breadcrumb-item active text-" aria-current="page">Dashboard 01</li>
+					</ol>
+					<div class="row">
+						<div class="col-lg-6 col-xl-3 col-md-6 col-sm-6 col-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-6">
+											<div class="dash1">
+												<h4 class="text-dark">675</h4>
+												<small class="text-muted ">Posts</small>
+											</div>
+										</div>
+										<div class="col-6">
+											<div id="chart1" class="overflow-hidden"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-xl-3 col-md-6 col-sm-6 col-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-6">
+											<div class="dash1">
+												<h4 class="text-dark">875</h4>
+												<small class="text-muted">Clicks</small>
+											</div>
+										</div>
+										<div class="col-6">
+											<div id="chart2" class="overflow-hidden"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-xl-3 col-md-6 col-sm-6 col-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-6">
+											<div class="dash1">
+												<h4 class="text-dark">976</h4>
+												<small class="text-muted">Shares</small>
+											</div>
+										</div>
+										<div class="col-6">
+											<div id="chart3" class="overflow-hidden"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-xl-3 col-md-6 col-sm-6 col-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-6">
+											<div class="dash1">
+												<h4 class="text-dark">418</h4>
+												<small class="text-muted">Remarks</small>
+											</div>
+										</div>
+										<div class="col-6">
+											<div id="chart4" class="overflow-hidden"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row ">
+						<div class="col-lg-12 col-xl-6 col-md-12 col-12 col-sm-12">
+							<div class="card">
+								<div class="card-header">
+									<h4>Monthly Sales</h4>
+								</div>
+								<div class="card-body">
+									<div id="bar-chart" class="overflow-hidden" > </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12 col-xl-6 col-md-12 col-12 col-sm-12">
+							<div class="card">
+								<div class="card-header">
+									<h4>Yearly Template Sales</h4>
+								</div>
+								<div class="card-body">
+									<div id="sales-chart" class="overflow-hidden"> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 col-sm-12">
+							<div class="card">
+								<div class="card-header">
+									<h4>Account Retention</h4>
+								</div>
+								<div class="card-body">
+									<div id="index" class="overflow-hidden h-400 mx-auto text-center " ></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</section>
+			</div>
+		</block>
+	</div>
+</div>
+{include file="public:js"}
+<block name="js">
+
+<!--Dashboard js-->
+<script src="__STATIC__/js/dashboard.js"></script>
+<script src="__STATIC__/js/apexcharts.js"></script>
+
+
+
+</block>
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+

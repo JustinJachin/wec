@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{include file="public:top"}
+		<block name="topCss">
+		<!--iCheck css-->
+		<link rel="stylesheet" href="__STATIC__/plugins/iCheck/all.css">
+		</block>
+	</head>
+
+	<body class="app ">
+
+		<div id="spinner"></div>
+
+		<div id="app">
+			<div class="main-wrapper" >
+				{include file="public:header"}
+				{include file="public:menu"}
+				<block name="bodsy">
+				<div class="app-content">
+					<section class="section">
+						<ol class="breadcrumb">
+					        <li class="breadcrumb-item"><a href="{:url('index/index')}">首页</a></li>
+                            <li class="breadcrumb-item"><a href="{:url('admin/index')}">管理员页面</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">角色分配</li>
+					    </ol>
+						
+						<div class="row">
+							<div class="col-lg-12 col-xl-2 col-md-12 col-sm-12"></div>
+							<div class="col-lg-12 col-xl-8 col-md-12 col-sm-12">
+								<div class="card ">
+									<div class="card-header">
+										<h4>角色分配</h4>
+									</div>
+									<div class="card-body cards">
+										<form id="form" class="form-horizontal" onsubmit="return false" method="post" enctype="multipart/form-data"  target="addfile">
+											<input type="hidden" name="id" value="{$id}">
+											{volist name="role" id="vo"}
+											{if  condition="$vo['lineFeed'] eq 1"}
+											<div class="form-group row">
+											{/if}
+											{if  condition="$vo['flat'] eq 1"}
+												<div class="col-md-3 text-center">
+													<label>
+														<input type="checkbox" class="flat-purple col-form-label" name="{$vo.id}" value="{$vo.id}" checked>
+													{$vo.description}
+													</label>
+												</div>
+											{else/}
+												<div class="col-md-3 text-center">
+													<label>
+														<input type="checkbox" class="flat-purple col-form-label"  name="{$vo.id}" value="{$vo.id}">
+													{$vo.description}
+													</label>
+												</div>
+											{/if}
+											{if  condition="$vo['lineEnd'] eq 1"}
+											</div>
+											{/if}
+											{/volist}
+										
+											<div class="form-group mb-0 mt-2 row justify-content-end ">
+												<div class="col-md-12 text-center">
+													<button type="submit" class="btn btn-primary">提 交</button>
+													<a href="{:url('admin/index')}" class="btn btn-outline-info">返 回</a> 
+												</div>
+											</div>
+											
+										</form>
+										<iframe id="addfile_iframe" src="" name="addfile" style="display: none;" frameborder="0"></iframe>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 col-xl-2 col-md-12 col-sm-12"></div>
+							
+						</div>
+
+					</section>
+				</div>
+				</block>
+			</div>
+		</div>
+
+			
+		{include file="public:js"}
+		<block name="js">
+			<script>
+				$("#form").submit(function(){
+					var formData = $("#form").serialize();//serialize() 方法通过序列化表单值，创建 URL 编码文本
+					
+					$.ajax({
+						type:'post',
+						url:"{:url('/admin/admin/addRole')}",
+						data:formData,
+						dataType:'json',
+						success:function(data){
+							if(data.status==1){
+								toastr.success('', data.msg);
+								// $(".cards").load(location.href+".cards");
+								setTimeout("window.history.back(-1)",1000);//设置延迟时间执行
+							}else{
+								toastr.error('', data.msg);
+							}
+						},
+						error:function(msg){
+							
+							toastr.error('请联系管理员', '系统错误');
+							
+						}
+					})
+				
+				});
+
+			</script>
+			<!--Select2 js-->
+			<script src="__STATIC__/plugins/select2/select2.full.js"></script>
+
+			<!--Inputmask js-->
+			<script src="__STATIC__/plugins/inputmask/jquery.inputmask.js"></script>
+
+			<!--Moment js-->
+			<script src="__STATIC__/plugins/moment/moment.min.js"></script>
+
+			<!--Bootstrap-daterangepicker js-->
+			<script src="__STATIC__/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+			<!--Bootstrap-datepicker js-->
+			<script src="__STATIC__/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
+			<!--iCheck js-->
+			<script src="__STATIC__/plugins/iCheck/icheck.min.js"></script>
+
+			<!--Bootstrap-colorpicker js-->
+			<script src="__STATIC__/plugins/bootstrap-colorpicker/bootstrap-colorpicker.min.js"></script>
+
+			<!--Bootstrap-timepicker js-->
+			<script src="__STATIC__/plugins/bootstrap-timepicker/bootstrap-timepicker.js"></script>
+			<!--forms js-->
+			<script src="__STATIC__/js/forms.js"></script>
+		</block>
+	</body>
+</html>

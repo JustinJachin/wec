@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>首页</title>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/bootstrap.css">
+		<!-- 默认先调用pc.css样式表 -->
+        <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/pc.css">
+        <!--[if MicroMessenger]>
+        <!-- 如果浏览器是微信内置,调用index.css样式表 -->
+        <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/index.css" />
+        <![endif]-->
+	</head>
+	<style type="text/css">
+		/*.nav_tab 
+		.nav_tab li{
+			margin: 10px;
+		}*/
+	</style>
+	<body>
+		<div class="container">
+			<ul class="nav" style="margin-top: 30px;">
+			    <li class="nav-item">
+			      <h4>旅品荟</h4>
+			    </li>
+			</ul>
+			<div class="logo" style="">
+				<img src="__STATIC__/index/img/logo.jpg" id="logo" class="img-circle">
+				<span class="nav-title"><a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIzNDg3MzkxMA==&subscene=0#wechat_redirect">旅品荟</a></span>
+			</div>
+			
+		</div>
+		<div class="top30"></div>
+		<div class="container">
+        
+	        <div class="tabbable">
+	            <!--nav-pills，nav-tabs，nav-stacked :改变选项卡的样式-->
+	            <div class="tab-pane active" id="tab1">
+                    {volist name='list' id="vo"}
+                	<div class="list-content">
+                		<a href="{:url('article/detail?id='.$vo['id'])}" class="list-a">
+                			<span class="float-left list-span">{$vo.title}</span>
+							<img class="float-right list-img" src="__STATIC__/{$vo.picture}">
+                		</a>
+                	</div>
+                	{/volist}
+                </div>
+	        </div>
+	    </div>
+		
+	</body>
+	<script type="text/javascript" src="__STATIC__/index/js/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="__STATIC__/index/js/popper.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/index/js/bootstrap.js"></script>
+</html>

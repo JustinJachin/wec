@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>首页</title>
+        <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/bootstrap.css">
+        <!-- 默认先调用pc.css样式表 -->
+        <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/pc.css">
+        <!--[if MicroMessenger]>
+        <!-- 如果浏览器是微信内置,调用index.css样式表 -->
+        <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/index.css" />
+        <![endif]-->
+    </head>
+    <style type="text/css">
+        /*.nav_tab 
+        .nav_tab li{
+            margin: 10px;
+        }*/
+    </style>
+    <body>
+        <div class="container">
+            <ul class="nav" style="margin-top: 30px;">
+                <li class="nav-item">
+                  <h4>旅品荟-出境旅游实时最新集锦</h4>
+                </li>
+            </ul>
+            <div class="logo">
+                <img src="__STATIC__/index/img/logo.jpg" id="logo" class="img-circle">
+                <span class="nav-title"><a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIzNDg3MzkxMA==&subscene=0#wechat_redirect">旅品荟</a></span>
+            </div>
+            <div id="demo" class="carousel slide slide-show" data-ride="carousel">
+              <!-- 指示符 -->
+              <ul class="carousel-indicators">
+                {volist name="slide" id="vo"}
+                {eq name="i" value="1"}
+                <li data-target="#demo" data-slide-to="{i}" class="active"></li>
+                {else/}
+                <li data-target="#demo" data-slide-to="{i}"></li>
+                {/eq}
+                {/volist}
+              </ul>
+             
+              <!-- 轮播图片 -->
+              
+              <div class="carousel-inner">
+                {volist name="slide" id="vo"}
+                {eq name="i" value="1"}
+                <div class="carousel-item active">
+                {else/}
+                <div class="carousel-item">
+                {/eq}
+                    <a href="{:url('article/detail?id='.$vo['id'])}">
+                        <img src="__STATIC__/{$vo.picture}">
+                        <div class="carousel-caption">
+                            <h3>{$vo.title}</h3>
+                        </div>
+                    </a>
+                </div>
+                {/volist}
+              </div>
+             
+              <!-- 左右切换按钮 -->
+              <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </a>
+              <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </a>
+             
+            </div>
+        </div>
+        <div class="top30"></div>
+        <div class="container">
+        
+            <div class="tabbable">
+                <!--nav-pills，nav-tabs，nav-stacked :改变选项卡的样式-->
+                <ul class="nav nav_tab">
+                    {volist name='lista' id="vo"}
+                    <li class="nav-item">
+                        {eq name="i" value='1'}
+                        <a href="#tab{$vo.id}" class="active" data-toggle="tab">{$vo.name}</a>
+                        {else/}
+                        <a href="#tab{$vo.id}" data-toggle="tab">{$vo.name}</a>
+                        {/eq}
+                    </li>
+                    {/volist}
+                    
+                </ul>
+                <!-- 选项卡相对应的内容 -->
+                <div class="tab-content" style="margin-top: 10px">
+                    {volist name="lista" id="vo"}
+                        {eq name="i" value='1'}
+                            <div class="tab-pane active" id="tab{$vo.id}">
+                                {volist name="vo.article" id='vs'}
+                                <div class="list-content">
+                                    <a href="{:url('article/detail?id='.$vs['id'])}" class="list-a">
+                                        <span class="float-left list-span">{$vs.title}</span>
+                                        <img class="float-right list-img" src="__STATIC__{$vs.picture}">
+                                    </a>
+                                </div>
+                                {/volist}
+                            </div>
+                        {else/}
+
+                            <div class="tab-pane" id="tab{$vo.id}">
+                                {volist name="vo.article" id='vs'}
+                                <div class="list-content">
+                                    <a href="{:url('article/detail?id='.$vs['id'])}" class="list-a">
+                                        <span class="float-left list-span">{$vs.title}</span>
+                                        <img class="float-right list-img" src="__STATIC__{$vs.picture}">
+                                    </a>
+                                </div>
+                                {/volist}
+                            </div>
+                        {/eq}
+                    {/volist}
+                </div>
+            </div>
+        </div>
+        
+    </body>
+    <script type="text/javascript" src="__STATIC__/index/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="__STATIC__/index/js/popper.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/index/js/bootstrap.js"></script>
+</html>

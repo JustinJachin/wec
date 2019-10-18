@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>首页</title>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/bootstrap.css">
+    <!-- 默认先调用pc.css样式表 -->
+    <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/pc.css">
+    <!--[if MicroMessenger]>
+    <!-- 如果浏览器是微信内置,调用index.css样式表 -->
+    <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/index.css" />
+    <![endif]-->
+    
+    </head>
+    <body>
+	<div class="container">
+            <ul class="nav" style="margin-top: 30px;">
+        	<li class="nav-item">
+        	   <h4>{$content.title}</h4>
+        	</li>
+            </ul>
+            <div class="logo" style="">
+        	<span class="nav-title"><a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIzNDg3MzkxMA==&subscene=0#wechat_redirect">旅品荟</a></span>
+                <span class="nav-time">{$content.create_time|date="Y-m-d"}</span>
+            </div>
+			
+	</div>
+	<div class="top60"></div>
+	<div class="container">
+        <div class="top-img">
+            <img src="__STATIC__/index/img/top.jpg">
+        </div>
+	    <div class="article-content">
+	           {:htmlspecialchars_decode($content.content)}
+	     </div>
+         <div class="top-img">
+               <img src="__STATIC__/index/img/footer.jpg">
+         </div>
+	</div>
+    <div class="container">
+        <div class="top30">
+           <span class="footer">阅读 {$content.read}</span> 
+        </div>
+        
+    </div>
+		
+    </body>
+    <script type="text/javascript" src="__STATIC__/index/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="__STATIC__/index/js/popper.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/index/js/bootstrap.js"></script>
+
+<script>
+
+</script>
+</html>
